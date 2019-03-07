@@ -1,0 +1,24 @@
+cd /path/to/my/workspace/
+git clone https://github.com/postrational/rest_api_demo			# only for first time download
+
+cd rest_api_demo
+
+#virtualenv -p `which python3` venv
+#source venv/bin/activate
+#pip install -r requirements.txt
+
+virtualenv venv								# only for first time setup of venv
+venv\Scripts\activate.bat
+
+pip install -r requirements.txt			# only for first time setup of venv
+
+python setup.py develop
+python rest_api_demo\app.py
+
+
+URL:
+http://localhost:8000/api/
+
+
+
+venv\Scripts\deactivate.bat
