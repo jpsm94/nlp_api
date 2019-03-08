@@ -1,11 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='rest_api_demo',
+    name='nlp_api',
     version='1.0.0',
-    description='Boilerplate code for a RESTful API based on Flask-RESTPlus',
-    url='https://github.com/postrational/rest_api_demo',
-    author='Michal Karzynski',
+    description='NLP RESTful API',
 
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -20,9 +18,9 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
 
-    keywords='rest restful api flask swagger openapi flask-restplus',
+    keywords='rest restful api flask swagger openapi flask-restplus nlp spacy',
 
     packages=find_packages(),
 
-    install_requires=['flask-restplus==0.12.1', 'Flask-SQLAlchemy==2.1'],
+    install_requires=['flask-restplus==0.12.1', 'spacy'],
 )
