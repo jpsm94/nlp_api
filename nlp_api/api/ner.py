@@ -21,7 +21,8 @@ text_model = api.model("text model", {
 
 @ns.route('/')
 class Ner(Resource):
-    @api.expect(text_model)
+    @ns.doc('pass_text')
+    @ns.expect(text_model)
     def post(self):
         """
         Get named entities
@@ -48,6 +49,7 @@ class Ner(Resource):
 
 @ns.route('/version')
 class SpacyVersion(Resource):
+    @ns.doc('get_version')
     def get(self):
         """
         Get spaCy version. This is the library used for NER.
