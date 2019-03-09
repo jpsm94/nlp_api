@@ -1,7 +1,7 @@
 FROM python:3.6
 LABEL maintainer="jpm"
 LABEL version="0.1"
-LABEL description="Demo image"
+LABEL description="NLP API Demo image"
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -19,4 +19,4 @@ ENV PYTHONPATH=.:/usr/src/app
 
 EXPOSE 8000
 
-CMD cd /usr/src/app/ && gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "wsgi:app"]
