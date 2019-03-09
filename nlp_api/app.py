@@ -5,6 +5,7 @@ from flask import Flask, Blueprint
 from nlp_api import settings
 from nlp_api.api import api
 from nlp_api.api.entities import ns as entities_namespace
+from nlp_api.api.topics import ns as topics_namespace
 
 app = Flask(__name__)
 logging.config.fileConfig('logging.conf')
@@ -27,6 +28,7 @@ def init_app(flask_app):
     api.init_app(blueprint)
     # add namespaces that define routes
     api.add_namespace(entities_namespace)
+    api.add_namespace(topics_namespace)
     flask_app.register_blueprint(blueprint)
 
 

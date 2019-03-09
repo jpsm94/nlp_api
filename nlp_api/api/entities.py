@@ -7,18 +7,15 @@ from flask import request
 from flask_restplus import Resource, fields
 
 from nlp_api.api import api
+from nlp_api.api.models import text_model
 
 log = logging.getLogger(__name__)
 
 ns = api.namespace('entities', description='Named Entity Recognition')
 
-# English model
+# English model from spacy
 # nlp = spacy.load('en')
 nlp = en_core_web_sm.load()
-
-text_model = api.model("text model", {
-    "text": fields.String("Input text")
-})
 
 
 @ns.route('/')
