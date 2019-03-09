@@ -10,8 +10,9 @@ from nlp_api.api import api
 
 log = logging.getLogger(__name__)
 
-ns = api.namespace('ner', description='Named Entity Recognition')
+ns = api.namespace('entities', description='Named Entity Recognition')
 
+# English model
 # nlp = spacy.load('en')
 nlp = en_core_web_sm.load()
 
@@ -19,13 +20,14 @@ text_model = api.model("text model", {
     "text": fields.String("Input text")
 })
 
+
 @ns.route('/')
-class Ner(Resource):
+class Entities(Resource):
     @ns.doc('pass_text')
     @ns.expect(text_model)
     def post(self):
         """
-        Get named entities
+        Get named entities from text
         """
         # data = api.payload
         data = request.json
@@ -47,12 +49,13 @@ class Ner(Resource):
         resp_body = json.dumps(entities)
         return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
 
+
 @ns.route('/version')
 class SpacyVersion(Resource):
     @ns.doc('get_version')
     def get(self):
         """
-        Get spaCy version. This is the library used for NER.
+        Get spaCy version (library used for Named Entity Recognition)
         """
         resp_body = json.dumps({'spacy': spacy.about.__version__})
         return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
