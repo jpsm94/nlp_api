@@ -9,7 +9,7 @@ from flask_restplus import Resource, fields
 from nlp_api.api import api
 from nlp_api.api.models import text_model
 
-log = logging.getLogger(__name__)
+log = logging.getLogger('api')
 
 ns = api.namespace('entities', description='Named Entity Recognition')
 
@@ -30,7 +30,7 @@ class Entities(Resource):
         data = request.json
         text = data['text']
 
-        log.debug('text: {}'.format(text))
+        # log.debug('text: {}'.format(text))
 
         entities = []
         if text:
@@ -41,7 +41,7 @@ class Entities(Resource):
                     'start': ent.start_char,
                     'stop': ent.end_char
                 })
-                log.debug('found {}'.format(ent.text))
+                log.debug('found entity: {}'.format(ent.text))
 
         resp_body = json.dumps(entities)
         return resp_body, 200, {'Access-Control-Allow-Origin': '*'}

@@ -7,7 +7,7 @@ from flask_restplus import Resource, fields
 from nlp_api.api import api
 from nlp_api.api.models import text_model
 
-log = logging.getLogger(__name__)
+log = logging.getLogger('api')
 
 ns = api.namespace('summaries', description='Extractive Text Summarization')
 

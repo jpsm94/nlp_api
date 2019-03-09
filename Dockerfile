@@ -19,4 +19,4 @@ ENV PYTHONPATH=.:/usr/src/app
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "wsgi:app"]
+CMD ["gunicorn", "--config", "gunicorn.conf", "--log-config", "logging.conf", "wsgi:app"]
