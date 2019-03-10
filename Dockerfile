@@ -11,7 +11,9 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt /usr/src/app/
 RUN pip install -r requirements.txt
+
 RUN python -m spacy download en_core_web_sm
+RUN python -c "import nltk; nltk.download('punkt')"
 
 COPY . /usr/src/app
 

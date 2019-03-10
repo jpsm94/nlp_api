@@ -22,5 +22,5 @@ setup(
 
     packages=find_packages(),
 
-    install_requires=['flask-restplus==0.12.1', 'spacy'],
+    install_requires=['flask-restplus==0.12.1', 'spacy', 'sumy'],
 )
