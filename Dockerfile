@@ -4,7 +4,6 @@ LABEL version="0.1"
 LABEL description="NLP API demo image"
 
 ARG BUILD_DATE
-ARG VCS_REF
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app

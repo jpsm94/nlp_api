@@ -4,7 +4,7 @@ import spacy
 import en_core_web_sm
 
 from flask import request
-from flask_restplus import Resource, fields
+from flask_restplus import Resource
 
 from nlp_api.api import api
 from nlp_api.api.models import text_model
