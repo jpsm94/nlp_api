@@ -32,6 +32,8 @@ class Entities(Resource):
 
         # log.debug('text: {}'.format(text))
 
+        # TODO: select top N entities
+
         entities = []
         if text:
             for ent in nlp(text).ents:

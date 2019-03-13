@@ -1,7 +1,7 @@
 FROM python:3.6
 LABEL maintainer="jpm"
 LABEL version="0.1"
-LABEL description="NLP API Demo image"
+LABEL description="NLP API demo image"
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -12,6 +12,7 @@ WORKDIR /usr/src/app
 COPY requirements.txt /usr/src/app/
 RUN pip install -r requirements.txt
 
+# required modules
 RUN python -m spacy download en_core_web_sm
 RUN python -c "import nltk; nltk.download('punkt')"
 

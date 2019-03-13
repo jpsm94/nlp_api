@@ -17,6 +17,7 @@ log = logging.getLogger('api')
 
 ns = api.namespace('summaries', description='Extractive Text Summarization')
 
+# defaults
 LANGUAGE = 'english'
 DEFAULT_NUM_SENTENCES = 4
 
@@ -27,7 +28,7 @@ class Summaries(Resource):
     @ns.expect(text_model)
     def post(self):
         """
-        Extract summary from text
+        Extract summary (key sentences) from text
         """
         # data = api.payload
         data = request.json
@@ -39,7 +40,7 @@ class Summaries(Resource):
 
         # log.debug('text: {}'.format(text))
 
-        # TODO: check for minimum number of sentences
+        # TODO: check for minimum number of sentences in text?
 
         summary_sentences = []
         if text:
