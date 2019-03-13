@@ -9,8 +9,9 @@ from nlp_api.api.topics import ns as topics_namespace
 from nlp_api.api.summaries import ns as summaries_namespace
 
 app = Flask(__name__)
+
 logging.config.fileConfig('logging.conf')
-log = logging.getLogger(__name__)
+log = logging.getLogger('api')
 
 
 def config_app(flask_app):
@@ -23,6 +24,7 @@ def config_app(flask_app):
 
 
 def init_app(flask_app):
+    log.info('Initialising app...')
     config_app(flask_app)
 
     blueprint = Blueprint('api', __name__, url_prefix='/api')
@@ -32,6 +34,7 @@ def init_app(flask_app):
     api.add_namespace(topics_namespace)
     api.add_namespace(summaries_namespace)
     flask_app.register_blueprint(blueprint)
+    log.info('Initialisation done')
 
 
 # initialization

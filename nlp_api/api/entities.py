@@ -46,6 +46,7 @@ class Entities(Resource):
                 log.debug('found entity: {}'.format(ent.text))
 
         resp_body = json.dumps(entities)
+        log.debug('response body:\n{}'.format(resp_body))
         return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
 
 

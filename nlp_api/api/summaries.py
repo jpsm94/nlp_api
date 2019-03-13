@@ -19,7 +19,7 @@ ns = api.namespace('summaries', description='Extractive Text Summarization')
 
 # defaults
 LANGUAGE = 'english'
-DEFAULT_NUM_SENTENCES = 4
+DEFAULT_NUM_SENTENCES = 3
 
 
 @ns.route('/')
@@ -37,6 +37,7 @@ class Summaries(Resource):
         # number of sentences param
         num_sentences = request.args.get("sentences")
         num_sentences = num_sentences if isinstance(num_sentences, int) else DEFAULT_NUM_SENTENCES
+        log.debug('num_sentences={}'.format(num_sentences))
 
         # log.debug('text: {}'.format(text))
 
@@ -55,4 +56,5 @@ class Summaries(Resource):
             summary_sentences = [sentence._text for sentence in summary]
 
         resp_body = json.dumps(summary_sentences)
+        log.debug('response body:\n{}'.format(resp_body))
         return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
