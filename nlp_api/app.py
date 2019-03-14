@@ -43,5 +43,5 @@ init_app(app)
 
 if __name__ == "__main__":
     server_port = int(os.environ.get('PORT', settings.FLASK_SERVER_PORT))
-    log.info('Server started at http://%s:%d/api/', settings.FLASK_SERVER_HOST, server_port)
+    log.info('Server starting at http://%s:%d/api/', settings.FLASK_SERVER_HOST, server_port)
     app.run(host=settings.FLASK_SERVER_HOST, port=server_port, debug=settings.FLASK_DEBUG)
