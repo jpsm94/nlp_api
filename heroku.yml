@@ -2,4 +2,6 @@ build:
   docker:
     web: Dockerfile
 run:
+  # use PORT assigned by Heroku
+  # use 2 workers as default
   web: gunicorn -b 0.0.0.0:$PORT -w 2 wsgi:app
