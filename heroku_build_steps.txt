@@ -1,0 +1,21 @@
+heroku login
+
+# create heroku app
+heroku create
+
+# check heroku remote added
+git remote -v      
+
+# rename heroku app name
+heroku apps:rename <new name>
+
+# set stack as container
+heroku stack:set container
+
+# push to heroku to build 
+git push heroku master
+
+# succeeding upates
+git push heroku master
+
+
