@@ -1,6 +1,8 @@
+import os
+
 # Flask settings
 FLASK_SERVER_HOST = '0.0.0.0'
-FLASK_SERVER_PORT = 8000
+FLASK_SERVER_PORT = int(os.environ.get('PORT', 8000))   # get from env, otherwise default to 8000
 FLASK_DEBUG = True  # Do not use debug mode in production
 
 # Flask-Restplus settings
