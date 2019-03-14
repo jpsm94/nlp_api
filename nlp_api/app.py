@@ -1,3 +1,4 @@
+import os
 import logging.config
 
 from flask import Flask, Blueprint
@@ -16,7 +17,7 @@ log = logging.getLogger('api')
 
 def config_app(flask_app):
     flask_app.config['SERVER_HOST'] = settings.FLASK_SERVER_HOST
-    flask_app.config['SERVER_PORT'] = settings.FLASK_SERVER_PORT
+    flask_app.config['SERVER_PORT'] = int(os.environ.get('PORT', settings.FLASK_SERVER_PORT))
     flask_app.config['SWAGGER_UI_DOC_EXPANSION'] = settings.RESTPLUS_SWAGGER_UI_DOC_EXPANSION
     flask_app.config['RESTPLUS_VALIDATE'] = settings.RESTPLUS_VALIDATE
     flask_app.config['RESTPLUS_MASK_SWAGGER'] = settings.RESTPLUS_MASK_SWAGGER
@@ -41,5 +42,6 @@ def init_app(flask_app):
 init_app(app)
 
 if __name__ == "__main__":
-    log.info('Server started at http://%s:%d/api/', settings.FLASK_SERVER_HOST, settings.FLASK_SERVER_PORT)
-    app.run(host=settings.FLASK_SERVER_HOST, port=settings.FLASK_SERVER_PORT, debug=settings.FLASK_DEBUG)
+    server_port = int(os.environ.get('PORT', settings.FLASK_SERVER_PORT))
+    log.info('Server started at http://%s:%d/api/', settings.FLASK_SERVER_HOST, server_port)
+    app.run(host=settings.FLASK_SERVER_HOST, port=server_port, debug=settings.FLASK_DEBUG)
