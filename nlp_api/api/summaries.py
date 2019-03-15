@@ -5,7 +5,7 @@ from flask import request
 from flask_restplus import Resource
 
 from nlp_api.api import api
-from nlp_api.api.models import text_model
+from nlp_api.api.models import text_summaries_model
 
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
@@ -25,7 +25,7 @@ DEFAULT_NUM_SENTENCES = 3
 @ns.route('/')
 class Summaries(Resource):
     @ns.doc('pass_text')
-    @ns.expect(text_model)
+    @ns.expect(text_summaries_model)
     def post(self):
         """
         Extract summary (key sentences) from text
@@ -33,9 +33,7 @@ class Summaries(Resource):
         # data = api.payload
         data = request.json
         text = data['text']
-
-        # number of sentences param
-        num_sentences = request.args.get("sentences")
+        num_sentences = data['num_sentences']
         num_sentences = num_sentences if isinstance(num_sentences, int) else DEFAULT_NUM_SENTENCES
         log.debug('num_sentences={}'.format(num_sentences))
 
@@ -55,6 +53,5 @@ class Summaries(Resource):
             # summary_text = ' '.join([sentence._text for sentence in summary])
             summary_sentences = [sentence._text for sentence in summary]
 
-        resp_body = json.dumps(summary_sentences)
-        log.debug('response body:\n{}'.format(resp_body))
-        return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
+        log.debug('response body:\n{}'.format(summary_sentences))
+        return summary_sentences, 200, {'Access-Control-Allow-Origin': '*'}

@@ -1,5 +1,4 @@
 import logging
-import json
 import spacy
 import en_core_web_sm
 
@@ -45,9 +44,8 @@ class Entities(Resource):
                 })
                 log.debug('found entity: {}'.format(ent.text))
 
-        resp_body = json.dumps(entities)
-        log.debug('response body:\n{}'.format(resp_body))
-        return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
+        log.debug('response body:\n{}'.format(entities))
+        return entities, 200, {'Access-Control-Allow-Origin': '*'}
 
 
 @ns.route('/version')
@@ -57,5 +55,5 @@ class SpacyVersion(Resource):
         """
         Get spaCy version (library used for Named Entity Recognition)
         """
-        resp_body = json.dumps({'spacy': spacy.about.__version__})
-        return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
+        version = {'spacy': spacy.about.__version__}
+        return version, 200, {'Access-Control-Allow-Origin': '*'}

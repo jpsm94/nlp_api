@@ -28,5 +28,5 @@ class Topics(Resource):
 
         topics = ['Still', 'under', 'development']
 
-        resp_body = json.dumps(topics)
-        return resp_body, 200, {'Access-Control-Allow-Origin': '*'}
+        log.debug('response body:\n{}'.format(topics))
+        return topics, 200, {'Access-Control-Allow-Origin': '*'}
