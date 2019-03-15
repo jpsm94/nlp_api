@@ -15,7 +15,7 @@ heroku stack:set container
 # push to heroku to build 
 git push heroku master
 
-# succeeding upates
+# succeeding upates (after git commit)
 git push heroku master
 
 
