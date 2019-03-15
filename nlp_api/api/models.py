@@ -37,7 +37,7 @@ talks with Mr. Trump. (Source: The New York Times)'''
 
 text_model = api.model('text model', {
     'text': fields.String(description='Input text',
-                          example='European authorities fined Google a record $5.1 billion on Wednesday for abusing its power in the mobile phone market and ordered the company to alter its practices')
+                          example='European authorities fined Google a record $5.1 billion on Wednesday for abusing its power in the mobile phone market and ordered the company to alter its practices.')
 })
 
 text_summaries_model = api.model('text summaries model', {
