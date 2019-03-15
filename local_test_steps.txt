@@ -7,7 +7,8 @@ venv\Scripts\activate.bat
 
 pip install -r requirements.txt			# only for first time setup of venv
 
-python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_sm                 # for spacy
+python -c "import nltk; nltk.download('punkt')"     # for sumy, nltk
 
 python setup.py develop
 python nlp_api\app.py

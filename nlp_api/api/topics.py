@@ -14,11 +14,11 @@ ns = api.namespace('topics', description='Topic Classification')
 
 @ns.route('/')
 class Topics(Resource):
-    @ns.doc('pass_text')
+    @ns.doc('post_topics')
     @ns.expect(text_model)
     def post(self):
         """
-        Get topics from text (IN PROGRESS)
+        Get topics from text (PLANNED)
         """
         # data = api.payload
         data = request.json

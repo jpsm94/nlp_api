@@ -24,7 +24,7 @@ DEFAULT_NUM_SENTENCES = 3
 
 @ns.route('/')
 class Summaries(Resource):
-    @ns.doc('pass_text')
+    @ns.doc('post_summaries')
     @ns.expect(text_summaries_model)
     def post(self):
         """

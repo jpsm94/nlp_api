@@ -19,7 +19,7 @@ nlp = en_core_web_sm.load()
 
 @ns.route('/')
 class Entities(Resource):
-    @ns.doc('pass_text')
+    @ns.doc('post_entities')
     @ns.expect(text_model)
     def post(self):
         """
@@ -31,7 +31,7 @@ class Entities(Resource):
 
         # log.debug('text: {}'.format(text))
 
-        # TODO: select top N entities
+        # TODO: select top N entities needed?
 
         entities = []
         if text:
@@ -50,7 +50,7 @@ class Entities(Resource):
 
 @ns.route('/version')
 class SpacyVersion(Resource):
-    @ns.doc('get_version')
+    @ns.doc('get_spacy_version')
     def get(self):
         """
         Get spaCy version (library used for Named Entity Recognition)
