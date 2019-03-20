@@ -14,7 +14,8 @@ RUN pip install -r requirements.txt
 
 # required modules
 RUN python -m spacy download en_core_web_sm
-RUN python -c "import nltk; nltk.download('punkt')"
+#RUN python -c "import nltk; nltk.download('punkt')"
+RUN python -m nltk.downloader -u https://pastebin.com/raw/D3TBY4Mj punkt
 
 COPY . /usr/src/app
 
