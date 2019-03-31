@@ -34,6 +34,7 @@ Last week, on a trip to Brussels, President Trump reiterated his complaints that
 businesses were at a disadvantage in Europe. Jean-Claude Juncker, president of the European 
 Commission, the bloc's executive arm, is to visit Washington next week for 
 talks with Mr. Trump. (Source: The New York Times)'''
+sample_text = ' '.join(sample_text.split())   # replace all whitespace with a single one
 
 text_model = api.model('text model', {
     'text': fields.String(description='Input text',
